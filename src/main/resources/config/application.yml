@@ -1,0 +1,4 @@
+spring:
+    application.name: Detector
+    profiles.active: #spring.profiles.active#
+server.port: 8080
