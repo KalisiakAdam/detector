@@ -16,13 +16,19 @@ import java.util.stream.Stream;
 public class TextParserServiceImpl implements TextParserService{
 
     @Override
-    public List<String> parseText(String fileName) {
+    public List<String> parseTextByLinesToListAsLowerCase(String fileName) {
+       return parseTextByLinesToListOriginal(fileName).stream()
+                .map(String::toLowerCase)
+                .collect(Collectors.toList());
+    }
 
+    @Override
+    public List<String> parseTextByLinesToListOriginal(String fileName) {
         List<String> data = new ArrayList<>();
         try {
             Path path = Paths.get("src/main/resources/files/" + fileName);
             Stream<String> lines = Files.lines(path);
-            data = lines.map(String::toLowerCase).collect(Collectors.toList());
+            data = lines.collect(Collectors.toList());
             lines.close();
         } catch (IOException ioException) {
             textParsingException(ioException);
