@@ -1,5 +1,6 @@
 package com.silent.detector.web.rest.v1;
 
+import com.silent.detector.domain.enumeration.Gender;
 import com.silent.detector.domain.model.GenderName;
 import com.silent.detector.service.genderDetector.GenderDetectorService;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(GenderDetectorApi.resource)
@@ -24,14 +26,14 @@ public class GenderDetectorApi {
         this.genderDetectorService = genderDetectorService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<GenderName>> getAllNamesWithGender() {
-        logger.info("REST request to get all names with gender");
+    @GetMapping("all-names")
+    public ResponseEntity<Map<Gender,List<String>>> getAllNamesWithGender() {
+        logger.info("REST request to get all names by gender");
         return ResponseEntity.ok(genderDetectorService.getListOfAllNamesWithGender());
     }
 
     @GetMapping("{name}")
-    public ResponseEntity<GenderName> getConsultant(@PathVariable(name = "name") String name) {
+    public ResponseEntity<GenderName> getNameWithGender(@PathVariable(name = "name") String name) {
         logger.info("REST request to get name gender by name: {} ", name);
         return ResponseEntity.ok(genderDetectorService.getNameWithGender(name));
     }
