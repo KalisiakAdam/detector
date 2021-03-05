@@ -16,6 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.*;
+
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -42,16 +44,31 @@ public class GenderDetectorApiInitTest {
                 .build();
 
         GenderName genderName = GenderName.builder().name("Adam").gender(Gender.MALE).build();
+        Map<Gender, List<String>> genderListMap = new HashMap<>();
+        genderListMap.put(Gender.MALE, Arrays.asList("Adam", "Marcin"));
+        genderListMap.put(Gender.FEMALE, Arrays.asList("Ula", "Julia"));
         when(genderDetectorService.getNameWithGender(any()))
                 .thenReturn(genderName);
+        when(genderDetectorService.getListOfAllNamesWithGender())
+                .thenReturn(genderListMap);
+
     }
 
     @Test
-    public void testGetNameWithGender() throws Exception {
+    public void testGetOneNameWithGender() throws Exception {
         restMvc.perform(get("/api/v1/gender-detector/Adam")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
         verify(genderDetectorService, times(1)).getNameWithGender("Adam");
+    }
+
+    @Test
+    public void testGetAllNamesByGender() throws Exception {
+        restMvc.perform(get("/api/v1/gender-detector/all-names")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        verify(genderDetectorService, times(1)).getListOfAllNamesWithGender();
     }
 }
