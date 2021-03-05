@@ -13,6 +13,7 @@ public class MoreThanOneNameSearchingServiceServiceImpl extends OneNameSearching
 
     @Override
     public GenderName whatGenderIsName(String searchingName) {
+
         return null;
     }
 }

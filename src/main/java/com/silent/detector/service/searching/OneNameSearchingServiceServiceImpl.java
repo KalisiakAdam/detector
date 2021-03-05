@@ -22,6 +22,10 @@ public class OneNameSearchingServiceServiceImpl implements NameSearchingService 
 
     @Override
     public GenderName whatGenderIsName(String searchingName) {
+        return getNameAndGender(searchingName);
+    }
+
+    protected GenderName getNameAndGender(String searchingName) {
         if(isItAvailableInTextFile(searchingName, FEMALE_FILE_NAME)) {
             return GenderName.builder().name(StringUtils.capitalize(searchingName)).gender(Gender.FEMALE).build();
         } else if (isItAvailableInTextFile(searchingName, MALE_FILE_NAME)) {
@@ -31,7 +35,7 @@ public class OneNameSearchingServiceServiceImpl implements NameSearchingService 
         }
     }
 
-    private boolean isItAvailableInTextFile (String searchingName, String fileName) {
+    protected boolean isItAvailableInTextFile (String searchingName, String fileName) {
         return textParserService.parseText(fileName).stream()
                 .parallel().anyMatch(searchingName.toLowerCase()::contains);
     }
