@@ -31,7 +31,7 @@ public class GenderDetectorApi {
     }
 
     @GetMapping("{name}")
-    public ResponseEntity<GenderName> getConsultant(@PathVariable(name = "name") String name) {
+    public ResponseEntity<GenderName> getNameWithGender(@PathVariable(name = "name") String name) {
         logger.info("REST request to get name gender by name: {} ", name);
         return ResponseEntity.ok(genderDetectorService.getNameWithGender(name));
     }

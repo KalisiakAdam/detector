@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface TextParserService {
     boolean isReadable(InputStream inputStream);
-    List<String> parse(InputStream inputStream);
+    List<String> parseText(String fileName);
 }
