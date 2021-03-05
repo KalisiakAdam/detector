@@ -25,8 +25,8 @@ public class GenderNameRepository {
 
     public Map<Gender,List<String>> fetchAllNamesByGender() {
         Map<Gender, List<String>> mapOfNamesByGender = new HashMap<>();
-        mapOfNamesByGender.put(Gender.FEMALE, new ArrayList<>(textParserService.parseTextByLinesToListAsLowerCase(FEMALE_FILE_NAME)));
-        mapOfNamesByGender.put(Gender.MALE, new ArrayList<>(textParserService.parseTextByLinesToListAsLowerCase(MALE_FILE_NAME)));
+        mapOfNamesByGender.put(Gender.FEMALE, new ArrayList<>(textParserService.parseTextByLinesToListOriginal(FEMALE_FILE_NAME)));
+        mapOfNamesByGender.put(Gender.MALE, new ArrayList<>(textParserService.parseTextByLinesToListOriginal(MALE_FILE_NAME)));
         return mapOfNamesByGender;
     }
 }

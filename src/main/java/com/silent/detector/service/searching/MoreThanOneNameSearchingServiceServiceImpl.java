@@ -36,7 +36,7 @@ public class MoreThanOneNameSearchingServiceServiceImpl extends OneNameSearching
         } else if (map.get(Gender.MALE) < map.get(Gender.FEMALE)) {
             return GenderName.builder().name(capitalizeAllNames(searchingName)).gender(Gender.FEMALE).build();
         } else {
-            return GenderName.builder().name(searchingName).gender(Gender.INCONCLUSIVE).build();
+            return GenderName.builder().name(capitalizeAllNames(searchingName)).gender(Gender.INCONCLUSIVE).build();
         }
     }
 

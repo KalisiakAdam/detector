@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface TextParserService {
     List<String> parseTextByLinesToListAsLowerCase(String fileName);
+    List<String> parseTextByLinesToListOriginal(String fileName);
 }
