@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-public class OneNameSearchingServiceTest {
+public class OneNameSearchingServiceServiceTest {
 
     private final TextParserService textParserService = new TextParserServiceImpl();
-    private final NameSearching nameSearching = new OneNameSearchingServiceImpl(textParserService);
+    private final NameSearchingService nameSearchingService = new OneNameSearchingServiceServiceImpl(textParserService);
 
     @Test
     public void testReturnFemaleGender(){
@@ -19,7 +19,7 @@ public class OneNameSearchingServiceTest {
         String searchingName = "Ula";
 
         //act
-        GenderName nameWithGender = nameSearching.whatGenderIsName(searchingName);
+        GenderName nameWithGender = nameSearchingService.whatGenderIsName(searchingName);
 
         //assert
         Assertions.assertEquals(nameWithGender, GenderName.builder().name("Ula").gender(Gender.FEMALE).build());
@@ -31,7 +31,7 @@ public class OneNameSearchingServiceTest {
         String searchingName = "Marcin";
 
         //act
-        GenderName nameWithGender = nameSearching.whatGenderIsName(searchingName);
+        GenderName nameWithGender = nameSearchingService.whatGenderIsName(searchingName);
 
         //assert
         Assertions.assertEquals(nameWithGender, GenderName.builder().name("Marcin").gender(Gender.MALE).build());
@@ -43,7 +43,7 @@ public class OneNameSearchingServiceTest {
         String searchingName = "Tomasz";
 
         //act
-        GenderName nameWithGender = nameSearching.whatGenderIsName(searchingName);
+        GenderName nameWithGender = nameSearchingService.whatGenderIsName(searchingName);
 
         //assert
         Assertions.assertEquals(nameWithGender, GenderName.builder().name("Tomasz").gender(Gender.INCONCLUSIVE).build());

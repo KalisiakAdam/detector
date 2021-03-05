@@ -11,12 +11,12 @@ import static com.silent.detector.config.Constants.FEMALE_FILE_NAME;
 import static com.silent.detector.config.Constants.MALE_FILE_NAME;
 
 @Service
-public class OneNameSearchingServiceImpl implements NameSearching {
+public class OneNameSearchingServiceServiceImpl implements NameSearchingService {
 
     private final TextParserService textParserService;
 
     @Autowired
-    public OneNameSearchingServiceImpl(TextParserService textParserService) {
+    public OneNameSearchingServiceServiceImpl(TextParserService textParserService) {
         this.textParserService = textParserService;
     }
 

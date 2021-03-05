@@ -2,7 +2,7 @@ package com.silent.detector.service.engine;
 
 import com.silent.detector.conditions.NameLengthValidator;
 import com.silent.detector.domain.model.GenderName;
-import com.silent.detector.service.searching.NameSearching;
+import com.silent.detector.service.searching.NameSearchingService;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import org.springframework.stereotype.Service;
@@ -11,22 +11,22 @@ import org.springframework.stereotype.Service;
 public class ChooseSearchEngineServiceImpl implements ChooseSearchEngineService {
 
     private final NameLengthValidator nameLengthValidator;
-    private final NameSearching oneNameSearchingService;
-    private final NameSearching multipleNameSearchingService;
+    private final NameSearchingService oneNameSearchingServiceService;
+    private final NameSearchingService multipleNameSearchingServiceService;
 
     public ChooseSearchEngineServiceImpl(NameLengthValidator nameLengthValidator,
-                                         @Qualifier("oneNameSearchingServiceImpl") NameSearching oneNameSearchingService,
-                                         @Qualifier("multipleNameSearchingServiceImpl") NameSearching multipleNameSearchingService) {
+                                         @Qualifier("oneNameSearchingServiceServiceImpl") NameSearchingService oneNameSearchingServiceService,
+                                         @Qualifier("moreThanOneNameSearchingServiceServiceImpl") NameSearchingService multipleNameSearchingServiceService) {
         this.nameLengthValidator = nameLengthValidator;
-        this.oneNameSearchingService = oneNameSearchingService;
-        this.multipleNameSearchingService = multipleNameSearchingService;
+        this.oneNameSearchingServiceService = oneNameSearchingServiceService;
+        this.multipleNameSearchingServiceService = multipleNameSearchingServiceService;
     }
 
     public GenderName whatIsNameGender(String name) {
         if(nameLengthValidator.isOneName(name)){
-            return oneNameSearchingService.whatGenderIsName(name);
+            return oneNameSearchingServiceService.whatGenderIsName(name);
         } else {
-            return multipleNameSearchingService.whatGenderIsName(name);
+            return multipleNameSearchingServiceService.whatGenderIsName(name);
         }
     }
 }
