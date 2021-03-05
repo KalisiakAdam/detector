@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 public class TextParserServiceImpl implements TextParserService{
 
     @Override
-    public List<String> parseText(String fileName) {
+    public List<String> parseTextByLinesToListAsLowerCase(String fileName) {
 
         List<String> data = new ArrayList<>();
         try {

@@ -11,14 +11,14 @@ public class TextParserTest {
     private final TextParserServiceImpl textParserService = new TextParserServiceImpl();
 
     @Test
-    public void testParseSimpleText() {
+    public void testParseTextByLineFromFileToLowerCase() {
         // arrange
         String fileName = FEMALE_FILE_NAME;
 
         //act
-        List<String> listOfNames = textParserService.parseText(fileName);
+        List<String> listOfNames = textParserService.parseTextByLinesToListAsLowerCase(fileName);
 
         //assert
-        Assertions.assertEquals(listOfNames.get(0), "Ania");
+        Assertions.assertEquals(listOfNames.get(0), "ania");
     }
 }

@@ -36,7 +36,7 @@ public class OneNameSearchingServiceServiceImpl implements NameSearchingService 
     }
 
     protected boolean isItAvailableInTextFile (String searchingName, String fileName) {
-        return textParserService.parseText(fileName).stream()
+        return textParserService.parseTextByLinesToListAsLowerCase(fileName).stream()
                 .parallel().anyMatch(searchingName.toLowerCase()::contains);
     }
 }
