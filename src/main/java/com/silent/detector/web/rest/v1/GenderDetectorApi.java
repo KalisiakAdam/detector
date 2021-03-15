@@ -33,7 +33,7 @@ public class GenderDetectorApi {
     @GetMapping
     public ResponseEntity<Map<Gender,List<String>>> getAllNamesWithGender() {
         try {
-            ResponseEntity<Map<Gender,List<String>>>responseEntity = ResponseEntity.ok(genderDetectorService.getListOfAllNamesWithGender());
+            ResponseEntity<Map<Gender,List<String>>> responseEntity = ResponseEntity.ok(genderDetectorService.getListOfAllNamesWithGender());
             logger.info("REST request to get all names by gender");
             return responseEntity;
         } catch (DetectorRuntimeException exception) {
