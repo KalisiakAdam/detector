@@ -7,7 +7,6 @@ import com.silent.detector.service.fileParse.TextParserServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 public class OneNameSearchingServiceServiceTest {
 
     private final TextParserService textParserService = new TextParserServiceImpl();

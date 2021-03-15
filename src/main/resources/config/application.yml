@@ -2,3 +2,8 @@ spring:
     application.name: Detector
     profiles.active: #spring.profiles.active#
 server.port: 8080
+
+#dev solution - risk of leaking information to a client
+server:
+    error:
+        include-message: always
